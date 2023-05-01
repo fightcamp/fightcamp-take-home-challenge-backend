@@ -1,0 +1,102 @@
+mutation { 
+  createAuthor(input: { 
+    name: "<NAME>",
+    email: "<EMAIL>"
+  }) { 
+    id,
+    name,
+    email
+  } 
+}
+
+query { 
+  author(id: "<ID>") { 
+      id, 
+      name, 
+      email, 
+      posts { 
+          id,
+          title,
+          content 
+      } 
+  } 
+}
+
+mutation { 
+  updateAuthor(id: "<ID>", input: {
+    name: "<NAME>",
+    email: "<EMAIL>"
+  }) {
+    id,
+    name,
+    email 
+  } 
+}
+
+mutation { 
+  deleteAuthor(id: "<ID>") { 
+    id, 
+    name, 
+    email
+  }
+}
+
+mutation {
+  createPost(input: {
+      title: "<TITLE>",
+      content: "<CONTENT>",
+      authorId: "<ID>"
+  }) { 
+      id,
+      title,
+      content,
+      author {
+          id, 
+          name,
+          email
+      }
+  }
+}
+
+query { 
+  post(id: "<ID>") {
+      id,
+      title,
+      content,
+      author {
+          id,
+          name,
+          email
+      }
+  }
+}
+
+mutation {
+  updatePost(id: "<ID>", input: {
+    title: "<TITLE>",
+    content: "<CONTENT>",
+      authorId: "<ID>"
+  }) {
+      id,
+      title,
+      content,
+      author {
+          id,
+          name,
+          email
+      }
+  }
+}
+
+mutation { 
+  deletePost(id: "<ID>") {
+      id,
+      title,
+      content,
+      author {
+          id,
+          name,
+          email
+      }
+  }
+}

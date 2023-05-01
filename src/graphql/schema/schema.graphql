@@ -1,0 +1,44 @@
+type Author {
+  id: ID!
+  name: String!
+  email: String!
+  posts: [Post]
+}
+
+input AuthorInput {
+  name: String!
+  email: String!
+}
+
+type Query {
+  author(id: ID!): Author
+}
+
+type Mutation {
+  createAuthor(input: AuthorInput!): Author
+  updateAuthor(id: ID!, input: AuthorInput!): Author
+  deleteAuthor(id: ID!): Author
+}
+
+type Post {
+  id: ID!
+  title: String!
+  content: String!
+  author: Author
+}
+
+input PostInput {
+  title: String!
+  content: String!
+  authorId: ID
+}
+
+type Query {
+  post(id: ID!): Post
+}
+
+type Mutation {
+  createPost(input: PostInput!): Post
+  updatePost(id: ID!, input: PostInput!): Post
+  deletePost(id: ID!): Post
+}

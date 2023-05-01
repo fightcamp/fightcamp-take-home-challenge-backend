@@ -1,0 +1,28 @@
+# Node modules and dependencies
+node_modules/
+
+# Environment variables and secrets
+.env
+
+# Build artifacts
+dist/
+build/
+
+# Logs
+logs/
+*.log
+
+# Editor and IDE related files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# TypeScript build output
+*.tsbuildinfo

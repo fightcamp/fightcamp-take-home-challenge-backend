@@ -1,0 +1,35 @@
+{
+  "name": "fightcamp-take-home-challenge-backend",
+  "version": "1.0.0",
+  "description": "A simple post management system using TypeScript, Node.js, and GraphQL",
+  "main": "src/server.ts",
+  "dependencies": {
+    "@apollo/server": "^4.7.0",
+    "@graphql-tools/load-files": "^6.6.1",
+    "@graphql-tools/merge": "^8.4.1",
+    "@graphql-tools/schema": "^9.0.19",
+    "@graphql-tools/utils": "^9.2.1",
+    "graphql": "^16.6.0",
+    "graphql-import-node": "^0.0.5",
+    "graphql-tools": "^8.3.20",
+    "mongoose": "^7.1.0",
+    "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.3",
+    "@types/supertest": "^2.0.12",
+    "@types/validator": "^13.7.15",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "start": "ts-node src/server.ts"
+  },
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "graphql"
+  ],
+  "author": "",
+  "license": "ISC"
+}
