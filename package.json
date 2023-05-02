@@ -15,7 +15,6 @@
     "@graphql-tools/utils": "^9.2.1",
     "graphql": "^16.6.0",
     "graphql-import-node": "^0.0.5",
-    "graphql-tools": "^8.3.20",
     "mongoose": "^7.1.0",
     "validator": "^13.9.0"
   },
