@@ -7,7 +7,7 @@ export interface IAuthor extends Document {
 }
 
 const authorSchema = new Schema<IAuthor>({
-  name: {
+  name: { 
     type: String,
     required: true,
     trim: true,

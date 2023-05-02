@@ -20,6 +20,7 @@ const postSchema = new Schema<IPost>({
   author: {
     type: Schema.Types.ObjectId,
     ref: 'Author',
+    key: '_id',
   },
 });
 

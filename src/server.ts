@@ -1,6 +1,6 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-import { schema } from './graphql/generateSchema';
+import { schema } from './generateSchema';
 import { connectToDatabase } from './utils/database';
 
 (async () => {
