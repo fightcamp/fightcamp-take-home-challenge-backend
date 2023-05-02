@@ -29,7 +29,7 @@
   "scripts": {
     "copy-schemas": "rsync -a --delete ./src/graphql/schema/ dist/graphql/schema",
     "build": "tsc && npm run copy-schemas",
-    "start": "npm run build & node dist/server.js",
+    "start": "npm run build && node dist/server.js",
     "serve": "node dist/server.js",
     "start:dev": "nodemon src/server.ts"
   },
