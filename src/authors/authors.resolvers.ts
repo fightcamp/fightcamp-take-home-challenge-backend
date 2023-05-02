@@ -1,15 +1,20 @@
 import { IResolvers } from '@graphql-tools/utils';
-import { Author, IAuthor } from './authors.model';
+import { Author, IAuthor, IAuthorInput } from './authors.model';
 import { validateAuthorInput } from './authors.validation';
+
+type QueryAuthorArgs = { id: string };
+type MutationCreateAuthorArgs = { input: IAuthorInput };
+type MutationUpdateAuthorArgs = { id: string, input: IAuthorInput };
+type MutationDeleteAuthorArgs = { id: string };
 
 const resolvers: IResolvers = {
   Query: {
-    author: async (_: any, { id }: any): Promise<IAuthor | null> => {
+    author: async (_: IAuthor, { id }: QueryAuthorArgs): Promise<IAuthor | null> => {
       return await Author.findById(id);
     },
   },
   Mutation: {
-    createAuthor: async (_: any, { input }: any): Promise<IAuthor> => {
+    createAuthor: async (_: IAuthor, { input }: MutationCreateAuthorArgs): Promise<IAuthor> => {
       const errors = validateAuthorInput(input);
       if (errors.length > 0) {
         throw new Error(errors.join(', '));
@@ -19,7 +24,7 @@ const resolvers: IResolvers = {
       await author.save();
       return author;
     },
-    updateAuthor: async (_: any, { id, input }: any): Promise<IAuthor | null> => {
+    updateAuthor: async (_: IAuthor, { id, input }: MutationUpdateAuthorArgs): Promise<IAuthor | null> => {
       const errors = validateAuthorInput(input);
       if (errors.length > 0) {
         throw new Error(errors.join(', '));
@@ -27,7 +32,7 @@ const resolvers: IResolvers = {
 
       return await Author.findByIdAndUpdate(id, input, { new: true });
     },
-    deleteAuthor: async (_: any, { id }: any): Promise<IAuthor | null> => {
+    deleteAuthor: async (_: IAuthor, { id }:  MutationDeleteAuthorArgs): Promise<IAuthor | null> => {
       return await Author.findByIdAndDelete(id);
     },
   },

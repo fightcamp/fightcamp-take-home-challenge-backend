@@ -1,5 +1,10 @@
 import { Schema, model, Document } from 'mongoose';
 
+export interface IAuthorInput {
+  name: string;
+  email: string;
+}
+
 export interface IAuthor extends Document {
   name: string;
   email: string;

@@ -1,5 +1,11 @@
 import { Schema, model, Document } from 'mongoose';
 
+export interface IPostInput {
+  title: string;
+  content: string;
+}
+
+
 export interface IPost extends Document {
   title: string;
   content: string;
@@ -20,7 +26,6 @@ const postSchema = new Schema<IPost>({
   author: {
     type: Schema.Types.ObjectId,
     ref: 'Author',
-    key: '_id',
   },
 });
 
