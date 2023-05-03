@@ -1,9 +1,9 @@
 import { connect, disconnect } from 'mongoose';
-
+import { config } from './config';
 
 export const connectToDatabase = async (): Promise<void> => {
   try {
-    const mongoose = await connect('mongodb://127.0.0.1:27017/post-management');
+    const mongoose = await connect(config.MONGO_URL);
 
     await mongoose.Connection;
 
