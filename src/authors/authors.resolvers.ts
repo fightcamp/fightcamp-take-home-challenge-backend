@@ -1,11 +1,12 @@
 import { IResolvers } from '@graphql-tools/utils';
 import { Author, IAuthor, IAuthorInput } from './authors.model';
 import { validateAuthorInput } from './authors.validation';
+import { IPost } from '../posts/posts.model';
 
-type QueryAuthorArgs = { id: string };
-type MutationCreateAuthorArgs = { input: IAuthorInput };
-type MutationUpdateAuthorArgs = { id: string, input: IAuthorInput };
-type MutationDeleteAuthorArgs = { id: string };
+interface QueryAuthorArgs { id: string };
+interface MutationCreateAuthorArgs { input: IAuthorInput };
+interface MutationUpdateAuthorArgs { id: string, input: IAuthorInput };
+interface MutationDeleteAuthorArgs { id: string };
 
 const resolvers: IResolvers = {
   Query: {
@@ -37,8 +38,9 @@ const resolvers: IResolvers = {
     },
   },
   Author: {
-    posts: async (parent: IAuthor) => {
-      return parent.populate('posts').then((author: { posts: any; }) => author.posts);
+    posts: async (parent: IAuthor): Promise<IPost[]> => {
+      const merge = await parent.populate<{ posts: IPost[]}>('posts')
+      return merge.posts
     },
   }
 }

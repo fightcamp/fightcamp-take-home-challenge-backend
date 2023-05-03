@@ -1,13 +1,12 @@
 import { IResolvers } from '@graphql-tools/utils';
-import { Author } from '../authors/authors.model';
+import { Author, IAuthor } from '../authors/authors.model';
 // TODO missing post validation
 import { IPost, IPostInput, IPostUpdateInput, Post } from './posts.model';
-import * as mongoose from 'mongoose'
 
-type QueryPostArgs = { id: string };
-type MutationCreatePostArgs = { input: IPostInput };
-type MutationUpdatePostArgs = { id: string, input: IPostUpdateInput };
-type MutationDeletePostArgs = { id: string };
+interface QueryPostArgs { id: string };
+interface MutationCreatePostArgs { input: IPostInput };
+interface MutationUpdatePostArgs { id: string, input: IPostUpdateInput };
+interface MutationDeletePostArgs { id: string };
 
 
 const resolvers: IResolvers = {
@@ -32,6 +31,12 @@ const resolvers: IResolvers = {
     },
     deletePost: async (_: IPost, { id }: MutationDeletePostArgs): Promise<IPost | null> => {
       return await Post.findByIdAndDelete(id);
+    },
+  },
+  Post: {
+    author: async (parent: IPost): Promise<IAuthor> => {
+      const merge = await parent.populate<{ author: IAuthor}>('author')
+      return merge.author
     },
   }
 }
