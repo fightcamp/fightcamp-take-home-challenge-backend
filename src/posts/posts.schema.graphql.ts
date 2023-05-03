@@ -1,3 +1,6 @@
+import { buildSchema } from "graphql"
+
+export const postSchema = `
 type Post {
   id: ID!
   title: String!
@@ -25,3 +28,4 @@ type Mutation {
   updatePost(id: ID!, input: PostInput!): Post
   deletePost(id: ID!): Post
 }
+`

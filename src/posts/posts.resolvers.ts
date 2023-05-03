@@ -15,7 +15,7 @@ function validateInput (input: Partial<IPost>): void {
   }
 }
 
-const resolvers: IResolvers = {
+export const postResolvers: IResolvers = {
   Query: {
     post: async (_: IPost, { id }: QueryPostArgs): Promise<IPost | null> => {
       return await Post.findById(id);
@@ -48,5 +48,3 @@ const resolvers: IResolvers = {
     },
   }
 }
-
-export default resolvers;

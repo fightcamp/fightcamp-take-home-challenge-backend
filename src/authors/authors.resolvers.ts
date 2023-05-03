@@ -15,7 +15,7 @@ function validateInput (input: Partial<IAuthor>): void {
   }
 }
 
-const resolvers: IResolvers = {
+export const authorResolvers: IResolvers = {
   Query: {
     author: async (_: IAuthor, { id }: QueryAuthorArgs): Promise<IAuthor | null> => {
       return await Author.findById(id);
@@ -43,5 +43,3 @@ const resolvers: IResolvers = {
     },
   }
 }
-
-export default resolvers;

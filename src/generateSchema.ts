@@ -1,12 +1,9 @@
-import 'graphql-import-node';
 import { makeExecutableSchema } from '@graphql-tools/schema'
-import { loadFilesSync } from '@graphql-tools/load-files';
-import path from 'path';
-
-const typeDefs = loadFilesSync(path.join(__dirname, '..', '/**/*.graphql'));
-const resolvers = loadFilesSync(path.join(__dirname, '..', '/**/*.resolvers.*'));
-
+import { authorSchema } from './authors/authors.schema.graphql';
+import { postSchema } from './posts/posts.schema.graphql';
+import { authorResolvers } from './authors/authors.resolvers';
+import { postResolvers } from './posts/posts.resolvers';
 export const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers,
+  typeDefs: [authorSchema, postSchema],
+  resolvers: [authorResolvers, postResolvers],
 });
