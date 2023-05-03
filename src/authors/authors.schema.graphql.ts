@@ -1,5 +1,3 @@
-import { buildSchema } from "graphql"
-
 export const authorSchema = `
   type Author {
     id: ID!

@@ -1,5 +1,3 @@
-import { buildSchema } from "graphql"
-
 export const postSchema = `
 type Post {
   id: ID!
