@@ -32,7 +32,8 @@
     "start": "npm run build && node dist/server.js",
     "serve": "node dist/server.js",
     "start:dev": "nodemon src/server.ts",
-    "test": "vitest --watch"
+    "test": "vitest",
+    "test:dev": "vitest --watch"
   },
   "keywords": [
     "typescript",
