@@ -3,8 +3,13 @@ import { Schema, model, Document } from 'mongoose';
 export interface IPostInput {
   title: string;
   content: string;
+  authorId: string;
 }
 
+export interface IPostUpdateInput {
+  title: string;
+  content: string;
+}
 
 export interface IPost extends Document {
   title: string;

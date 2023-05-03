@@ -11,6 +11,11 @@ input PostInput {
   authorId: ID
 }
 
+input PostUpdateInput {
+  title: String!
+  content: String!
+}
+
 type Query {
   post(id: ID!): Post
 }
