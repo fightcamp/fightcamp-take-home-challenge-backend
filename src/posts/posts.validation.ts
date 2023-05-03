@@ -1,5 +1,4 @@
 import { IPost } from './posts.model';
-import validator from 'validator';
 
 export const validatePostInput = (postInput: Partial<IPost>): string[] => {
   const errors: string[] = [];

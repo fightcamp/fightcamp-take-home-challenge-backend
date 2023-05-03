@@ -8,6 +8,13 @@ interface MutationCreateAuthorArgs { input: IAuthorInput };
 interface MutationUpdateAuthorArgs { id: string, input: IAuthorInput };
 interface MutationDeleteAuthorArgs { id: string };
 
+function validateInput (input: Partial<IAuthor>): void {
+  const errors = validateAuthorInput(input);
+  if (errors.length > 0) {
+    throw new Error(errors.join(', '));
+  }
+}
+
 const resolvers: IResolvers = {
   Query: {
     author: async (_: IAuthor, { id }: QueryAuthorArgs): Promise<IAuthor | null> => {
@@ -16,21 +23,13 @@ const resolvers: IResolvers = {
   },
   Mutation: {
     createAuthor: async (_: IAuthor, { input }: MutationCreateAuthorArgs): Promise<IAuthor> => {
-      const errors = validateAuthorInput(input);
-      if (errors.length > 0) {
-        throw new Error(errors.join(', '));
-      }
-
+      validateInput(input);
       const author = new Author(input);
       await author.save();
       return author;
     },
     updateAuthor: async (_: IAuthor, { id, input }: MutationUpdateAuthorArgs): Promise<IAuthor | null> => {
-      const errors = validateAuthorInput(input);
-      if (errors.length > 0) {
-        throw new Error(errors.join(', '));
-      }
-
+      validateInput(input);
       return await Author.findByIdAndUpdate(id, input, { new: true });
     },
     deleteAuthor: async (_: IAuthor, { id }:  MutationDeleteAuthorArgs): Promise<IAuthor | null> => {
