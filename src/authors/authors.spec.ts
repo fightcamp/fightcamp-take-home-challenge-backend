@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { ApolloServer } from '@apollo/server';
 import { schema } from '../composeSchema';
 import { connectToDatabase } from '../utils/database';
+import { validateAuthorInput } from './authors.validation';
 
 const queryNonExisting = `
 query { 
@@ -28,6 +29,16 @@ mutation {
     email
   } 
 }`
+
+describe('Authors data validation', () => {
+  it ('should return an error if name is not provided', () => {
+    const authorInput = {
+      email: 'hello@gmail.com',
+    };
+    const errors = validateAuthorInput(authorInput);
+    expect(errors).toContain('Name is required');
+  })
+});
 
 describe('Authors', () => {
 
