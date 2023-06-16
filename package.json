@@ -4,7 +4,7 @@
   "description": "A simple post management system using TypeScript, Node.js, and GraphQL",
   "main": "src/server.ts",
   "dependencies": {
-    "@apollo/server": "^4.7.0",
+    "@apollo/server": "^4.7.4",
     "@graphql-tools/load-files": "^6.6.1",
     "@graphql-tools/merge": "^8.4.1",
     "@graphql-tools/schema": "^9.0.19",
